@@ -1,0 +1,13 @@
+build_from:
+  aarch64: ghcr.io/home-assistant/aarch64-base:latest
+  amd64: ghcr.io/home-assistant/amd64-base:latest
+  armhf: ghcr.io/home-assistant/armhf-base:latest
+  armv7: ghcr.io/home-assistant/armv7-base:latest
+labels:
+  org.opencontainers.image.title: "OPTIM-ON"
+  org.opencontainers.image.description: "OPTIM-ON energy optimization system by DOMOPTI"
+  org.opencontainers.image.vendor: "DOMOPTI"
+  org.opencontainers.image.authors: "DOMOPTI"
+  org.opencontainers.image.url: "https://github.com/DOMOPTI/HA-addons"
+  org.opencontainers.image.source: "https://github.com/DOMOPTI/HA-addons"
+  org.opencontainers.image.documentation: "https://github.com/DOMOPTI/HA-addons/blob/main/optim-on/README.md"

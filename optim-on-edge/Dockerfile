@@ -24,3 +24,11 @@ LABEL \
     org.opencontainers.image.revision=${BUILD_REF} \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.version=${BUILD_VERSION}
+
+# Bind Next.js to all interfaces (HA Supervisor connects via container IP, not localhost)
+ENV HOSTNAME=0.0.0.0
+
+# Startup wrapper: recreates /data subdirs wiped by HA's volume mount, then starts supervisord
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
+CMD ["/run.sh"]

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -lh \"c:/Users/zanat/Documents/Sviluppo/DOMOPTI/OPTIM-ON/distribution/ha-addons/HA-addons/optim-on/logo\"*)"
+    ]
+  }
+}

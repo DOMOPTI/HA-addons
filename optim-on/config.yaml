@@ -10,6 +10,10 @@ startup: application
 boot: auto
 ingress: true
 ingress_port: 3000
+panel_icon: mdi:power
+panel_title: "OPTIM-ON"
+panel_admin: true
+homeassistant_api: true
 options: {}
 schema: {}
 image: "ghcr.io/domopti/{arch}-addon-optim-on"

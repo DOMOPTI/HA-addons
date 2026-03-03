@@ -38,6 +38,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lowercase owner
+        id: owner
+        run: echo "name=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_OUTPUT
+
       - name: Read build_from
         id: build_from
         run: |
@@ -49,7 +53,7 @@ jobs:
           context: ./optim-on
           platforms: ${{ matrix.platform }}
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.arch }}-addon-optim-on:${{ github.event.release.tag_name }}
+          tags: ghcr.io/${{ steps.owner.outputs.name }}/${{ matrix.arch }}-addon-optim-on:${{ github.event.release.tag_name }}
           build-args: |
             BUILD_FROM=${{ steps.build_from.outputs.image }}
             BUILD_ARCH=${{ matrix.arch }}

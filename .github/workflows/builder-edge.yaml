@@ -1,64 +1,38 @@
-name: Builder (stable)
+name: Builder (edge)
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
 
 jobs:
-  init:
-    runs-on: ubuntu-latest
-    name: Initialize builds
-    outputs:
-      changed_addons: ${{ steps.changed_addons.outputs.addons }}
-      changed: ${{ steps.changed_addons.outputs.changed }}
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v4
-
-      - name: Get changed add-ons
-        id: changed_addons
-        uses: home-assistant/actions/helpers/find-addons@master
-
   build:
-    needs: init
     runs-on: ubuntu-latest
-    if: needs.init.outputs.changed == 'true'
-    name: Build ${{ matrix.arch }} ${{ matrix.addon }} add-on
+    name: Build ${{ matrix.arch }} edge add-ons
     permissions:
       contents: read
       packages: write
       id-token: write
     strategy:
       matrix:
-        addon: ${{ fromJson(needs.init.outputs.changed_addons) }}
+        addon: ["optim-on-edge"]
         arch: ["aarch64", "amd64"]
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Skip edge add-ons
-        id: skip_edge
-        run: |
-          if [[ "${{ matrix.addon }}" == *"-edge" ]]; then
-            echo "skip=true" >> $GITHUB_OUTPUT
-          else
-            echo "skip=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Get information
         id: info
-        if: steps.skip_edge.outputs.skip == 'false'
         uses: home-assistant/actions/helpers/info@master
         with:
           path: "./${{ matrix.addon }}"
 
       - name: Check if add-on should be built
         id: check
-        if: steps.skip_edge.outputs.skip == 'false'
         run: |
           if [[ "${{ steps.info.outputs.architectures }}" =~ ${{ matrix.arch }} ]]; then
             echo "build_arch=true" >> $GITHUB_OUTPUT
@@ -67,7 +41,7 @@ jobs:
           fi
 
       - name: Login to GitHub Container Registry
-        if: steps.skip_edge.outputs.skip == 'false' && steps.check.outputs.build_arch == 'true'
+        if: steps.check.outputs.build_arch == 'true'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -75,7 +49,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build ${{ matrix.addon }} add-on
-        if: steps.skip_edge.outputs.skip == 'false' && steps.check.outputs.build_arch == 'true'
+        if: steps.check.outputs.build_arch == 'true'
         uses: home-assistant/builder@master
         with:
           args: |

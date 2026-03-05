@@ -1,5 +1,5 @@
 name: "OPTIM-ON Edge"
-version: "1.0.0-edge.1"
+version: "1.0.1"
 slug: "optim_on_edge"
 description: "OPTIM-ON edge (development) builds by DOMOPTI — may be unstable"
 url: "https://github.com/DOMOPTI/HA-addons/tree/main/optim-on-edge"
@@ -14,6 +14,4 @@ ports:
   3000/tcp: 3000
 webui: "http://[HOST]:[PORT:3000]"
 homeassistant_api: true
-options: {}
-schema: {}
 image: "ghcr.io/domopti/{arch}-addon-optim-on-edge"

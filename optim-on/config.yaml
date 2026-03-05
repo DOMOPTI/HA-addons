@@ -13,6 +13,4 @@ ports:
   3000/tcp: 3000
 webui: "http://[HOST]:[PORT:3000]"
 homeassistant_api: true
-options: {}
-schema: {}
 image: "ghcr.io/domopti/{arch}-addon-optim-on"

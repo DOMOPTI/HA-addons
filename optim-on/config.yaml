@@ -10,7 +10,7 @@ init: false
 startup: application
 boot: auto
 ports:
-  3000/tcp: 3000
+  3000/tcp: 80
 webui: "http://[HOST]:[PORT:3000]"
 homeassistant_api: true
 image: "ghcr.io/domopti/{arch}-addon-optim-on"

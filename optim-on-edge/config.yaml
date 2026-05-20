@@ -15,3 +15,7 @@ ports:
 webui: "http://[HOST]:[PORT:3000]"
 homeassistant_api: true
 image: "ghcr.io/domopti/{arch}-addon-optim-on-edge"
+options:
+  reset_admin: false
+schema:
+  reset_admin: bool

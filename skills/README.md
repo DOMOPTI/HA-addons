@@ -1,28 +1,47 @@
 # Skills
 
-A skill is a procedural document explaining how to perform a specific kind of task in this repository. Skills are matched by task type and read by agents at the start of relevant work.
+A skill is a procedural how-to, read by an agent mid-task and matched to the work
+at hand. Skills are **lookup** docs: dense, terse, written for retrieval and
+action, not for browsing.
 
-## Skill file naming
+## Format
 
-SKILL_<task-type>.md -- e.g., SKILL_add-feature.md, SKILL_fix-bug.md, SKILL_release.md.
+One folder per skill (Anthropic's skill standard):
 
-## Skill structure
+    skills/<skill-name>/SKILL.md
 
-Every skill file should have:
+`<skill-name>` is lowercase-hyphens (e.g. `add-device-protocol`). Supporting
+files (templates, scripts, examples) live beside `SKILL.md` in the same folder.
+Each `SKILL.md` opens with YAML frontmatter, then a lookup-style body:
 
-- Header line: # SKILL: <name>
-- "When to use this skill" section: bullets describing task types/keywords for matching.
-- "Prerequisites" section: other docs to read first.
-- "Procedure" section: numbered explicit steps, with file:line references where applicable.
-- "Verification" section: how to confirm success.
-- "Common mistakes" section: traps to avoid.
+```yaml
+---
+name: <skill-name>           # lowercase-hyphens, max 64 chars
+description: <what it does AND when to read it>    # third-person, max 1024 chars
+scope: <repos / contexts the skill applies to>
+---
+```
 
-## How to author a skill
+## Read first
 
-Skills should emerge from repeated patterns. If you find yourself giving the same instructions to an agent twice, write a skill the third time.
+These cross-system skills govern how skills are written and how agents work.
+Read the relevant one before you start; do not restate them here.
 
-A good skill is concrete, testable, and references this repo's actual conventions.
+For working with the user and managing uncertainty across all tasks:
+
+- `optim-on-iac/cross-system/skills/cooperating/SKILL.md` — uncertainty levels, when to stop and ask, IP discipline, handling correction.
+
+For authoring or editing skills:
+
+- `optim-on-iac/cross-system/skills/authoring-docs/SKILL.md` — the doc standard.
+- `optim-on-iac/cross-system/skills/verifying-docs/SKILL.md` — the verification pass to run before declaring a skill done.
+
+## Authoring a skill
+
+Skills emerge from repeated patterns: if you give an agent the same instructions
+twice, write the skill the third time. Keep it concrete and testable, reference
+this repo's actual conventions, and follow the standard above.
 
 ## Index
 
-(no skills yet -- they will be added as patterns emerge)
+(no skills in this repo yet — added as patterns emerge)

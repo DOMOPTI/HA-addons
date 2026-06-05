@@ -1,20 +1,24 @@
 # Internal documentation
 
-Implementation details, design rationale, operational notes. Read by humans and by executors in this repo. Not exposed to agents in other repos.
+HA-addons is a **public** GitHub repository. Internal and operational
+documentation for the add-on wrapper — the CI/build pipeline, the release
+procedure, and operational gotchas — is **not** kept here. It lives in the private
+`optim-on-iac` repository:
 
-## What goes here
+    optim-on-iac/docs/internal/wrappers/
 
-- Why decisions were made.
-- Gotchas, edge cases, things that look weird but are intentional.
-- Operational details (deployment, monitoring, debugging).
-- Dependencies and their quirks.
-- Performance characteristics and bottlenecks.
+This keeps implementation and operational detail behind the public/internal
+boundary while the add-on definitions and their public contract stay here.
 
-## What does NOT go here
+## What stays in HA-addons
 
-- Things readers outside this repo need (those go in public/).
-- Secrets, credentials, API keys.
+- Add-on definitions: `optim-on/`, `optim-on-edge/`.
+- Public contract: [`docs/public/`](../public/) — architecture and interface docs.
 
-## File suggestions
+## What lives in optim-on-iac
 
-design-decisions.md, gotchas.md, operations.md, dependencies.md.
+- Build/release runbook, CI pipeline notes, the manual base-image bump procedure,
+  and operational gotchas.
+
+For the bundled application internals (dashboard, worker), see the
+`optim-on-local-agent` documentation, not this repo.

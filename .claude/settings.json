@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Glob(**)",
+      "Grep(**)",
+      "Edit(specs/**)",
+      "Edit(docs/**)",
+      "Write(specs/**)",
+      "Write(docs/**)"
+    ],
+    "deny": [
+      "Edit(src/**)",
+      "Edit(lib/**)",
+      "Edit(module/**)",
+      "Edit(python/**)",
+      "Edit(scripts/**)",
+      "Edit(test/**)",
+      "Edit(tests/**)",
+      "Edit(frontend/**)",
+      "Edit(pipelines/**)",
+      "Edit(iac/**)",
+      "Write(src/**)",
+      "Write(lib/**)",
+      "Write(module/**)",
+      "Write(python/**)",
+      "Write(scripts/**)",
+      "Write(test/**)",
+      "Write(tests/**)",
+      "Write(frontend/**)",
+      "Write(pipelines/**)",
+      "Write(iac/**)",
+      "Bash(*)"
+    ]
+  }
+}

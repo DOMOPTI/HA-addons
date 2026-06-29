@@ -1,5 +1,8 @@
 local-versions/
-.claude/
+# .claude/settings.json is tracked (shared agent config)
+.claude/settings.local.json
+.claude/conversation_history/
+.claude/cache/
 
 # --- Secrets baseline (shared; see cross-system/conventions.md §Secrets) ---
 .env

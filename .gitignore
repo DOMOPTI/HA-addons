@@ -1,2 +1,14 @@
 local-versions/
 .claude/
+
+# --- Secrets baseline (shared; see cross-system/conventions.md §Secrets) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.secret
+id_rsa*

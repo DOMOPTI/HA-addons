@@ -1,3 +1,3 @@
 build_from:
-  aarch64: public.ecr.aws/v0f8z0k0/optim-on-local-agent-dev:dev-66468f1
-  amd64: public.ecr.aws/v0f8z0k0/optim-on-local-agent-dev:dev-66468f1
+  aarch64: public.ecr.aws/v0f8z0k0/optim-on-local-agent-dev:dev
+  amd64: public.ecr.aws/v0f8z0k0/optim-on-local-agent-dev:dev

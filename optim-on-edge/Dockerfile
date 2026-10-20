@@ -25,7 +25,10 @@ LABEL \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.version=${BUILD_VERSION}
 
-# Bind Next.js to all interfaces so HA can reach it
+# Leftover from the Node era: Next.js read HOSTNAME to choose its bind
+# address. The Python API binds from OPTIMON_API_HOST, set in the image's
+# supervisord.conf, so nothing reads this any more. Kept because it is inert
+# and removing it would change the published image for no gain.
 ENV HOSTNAME=0.0.0.0
 
 COPY run.sh /run.sh

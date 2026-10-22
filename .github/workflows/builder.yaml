@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build ${{ matrix.arch }} optim-on
     strategy:
+      fail-fast: false
       matrix:
         include:
           - arch: amd64
